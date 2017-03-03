@@ -1,6 +1,6 @@
 import json
-import urllib.parse
-import urllib.request
+import urllib
+import urllib2
 
 URL = "lapi.transitchicago.com/api/1.0/ttpositions.aspx"
 TRAIN_DIRECTION_INTO_LOOP = u'5'
@@ -50,11 +50,11 @@ def get_all_brown_trains():
         'outputType': 'JSON'
     }
 
-    param_values = urllib.parse.urlencode(params)
+    param_values = urllib.urlencode(params)
     full_url = api_url + '?' + param_values
-    with urllib.request.urlopen(full_url) as response:
-        response_text = response.read().decode('utf-8')
-        return json_to_map(response_text)
+    response = urllib2.urlopen(full_url)
+    response_text = response.read().decode('utf-8')
+    return json_to_map(response_text)
 
 
 def stops_with_arriving_trains(trains):
