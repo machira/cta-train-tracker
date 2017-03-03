@@ -1,0 +1,4 @@
+1. Should I query only trains in one direction?
+2. We want to show all stations.
+3. We want to show all southbound (if we pick one direction only) trains on all stations i.e. if we have a train
+ far away in Kimball, but coming down, we will still show it.
